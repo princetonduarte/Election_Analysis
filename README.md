@@ -35,27 +35,23 @@ The election commission has requested some additional data to complete the audit
 3. The county with the highest turnout
 
 ## Challenge Summary
-<<<<<<< HEAD
 I needed to download the starter code which included the initial code that performed the analysis for each of the candidates. The challenge was to find the voter turnout for each county, percentage, and the highest turnout. 
 
-# 1: Create a county list and county votes dictionary.
+### 1: Create a county list and county votes dictionary.
 county_options = []
 county_votes = {}
-# 2: Track the largest county and county voter turnout.
+### 2: Track the largest county and county voter turnout.
 largest_county = ""
 county_voter_turnout = 0
 winning_county_percentage = 0
-# 3: Extract the county name from each row.
+### 3: Extract the county name from each row.
    county_name = row[1]
-# 4a: Write an if statement that checks that the
-# county does not match any existing county in the county list.
+### 4a: Write an if statement that checks that the county does not match any existing county in the county list.
     if county_name not in county_options:
-# 4b: Add the existing county to the list of counties.
+### 4b: Add the existing county to the list of counties.
       county_options.append(county_name)
-# 4c: Begin tracking the county's vote count.
+### 4c: Begin tracking the county's vote count.
       county_votes[county_name] = 0
-# 5: Add a vote to that county's vote count.
-      county_votes[county_name] += 1   
-=======
->>>>>>> refs/remotes/origin/main
+### 5: Add a vote to that county's vote count.
+      county_votes[county_name] += 1
 
