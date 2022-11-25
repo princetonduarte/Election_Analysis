@@ -37,21 +37,58 @@ The election commission has requested some additional data to complete the audit
 ## Challenge Summary
 I needed to download the starter code which included the initial code that performed the analysis for each of the candidates. The challenge was to find the voter turnout for each county, percentage, and the highest turnout. 
 
-### 1: Create a county list and county votes dictionary.
-county_options = []
-county_votes = {}
-### 2: Track the largest county and county voter turnout.
-largest_county = ""
-county_voter_turnout = 0
-winning_county_percentage = 0
-### 3: Extract the county name from each row.
-   county_name = row[1]
-### 4a: Write an if statement that checks that the county does not match any existing county in the county list.
-    if county_name not in county_options:
-### 4b: Add the existing county to the list of counties.
-      county_options.append(county_name)
-### 4c: Begin tracking the county's vote count.
-      county_votes[county_name] = 0
-### 5: Add a vote to that county's vote count.
-      county_votes[county_name] += 1
+- The county votes were:
+	- Jeferson county had 10.5% of the votes with 38,855 voters.
+	- Denver county had 82.8% of the votes with 306,055 voters.
+	- Arapahoe county had 6.7% of the votes with 24,801 voters.
+- The highest county of voters that turned out was in Denver with nearly 83% of the 369,711 votes. 
 
+### Election Analysis Text
+![](https://github.com/princetonduarte/Election_Analysis/blob/1b52705638d75d1cfae05c755ed4e186d9509a5b/Resources/election_analysistxt.png)
+
+### Terminal 
+![](https://github.com/princetonduarte/Election_Analysis/blob/c061d5f62360505fbba1bcd78a906346844af7ad/Resources/terminal_election_results.png)
+
+## The below code was added to [PyPoll_Challenge.py](https://github.com/princetonduarte/Election_Analysis/blob/664ad992e0909aad65d068c79fc5d1a867291193/PyPoll_Challenge.py).
+#### 1: Create a county list and county votes dictionary.
+	county_options = []
+	county_votes = {}
+#### 2: Track the largest county and county voter turnout.
+	largest_county = ""
+	county_voter_turnout = 0
+winning_county_percentage = 0
+#### 3: Extract the county name from each row.
+   	county_name = row[1]
+#### 4a: Write an if statement that checks that the county does not match any existing county in the county list.
+    if county_name not in county_options:
+#### 4b: Add the existing county to the list of counties.
+      county_options.append(county_name)
+#### 4c: Begin tracking the county's vote count.
+      county_votes[county_name] = 0
+#### 5: Add a vote to that county's vote count.
+      county_votes[county_name] += 1
+#### 6a: Write a for loop to get the county from the county dictionary.
+    for county_name in county_votes:
+#### 6b: Retrieve the county vote count.
+        county = county_votes.get(county_name)
+#### 6c: Calculate the percentage of votes for the county.
+        county_vote_percentage = float(county) / float(total_votes) * 100
+        county_results = (
+            f"{county_name}: {county_vote_percentage:.1f}% {county:,}\n")
+
+#### 6d: Print the county results to the terminal.
+	print(county_results)
+#### 6e: Save the county votes to a text file.
+	txt_file.write(county_results)
+#### 6f: Write an if statement to determine the winning county and get its vote count.
+	if (county > county_voter_turnout) and (county_vote_percentage > winning_county_percentage):
+		county_voter_turnout = county
+        winning_county = county_name
+         winning_county_percentage = county_vote_percentage
+#### 7: Print the county with the largest turnout to the terminal.
+    largest_county = (f"\n-------------------------\nLargest County Turnout: {winning_county}\n"
+        "-------------------------\n")
+    print(largest_county)
+    txt_file.write(largest_county)    
+#### 8: Save the county with the largest turnout to a text file.
+	txt_file.write(largest_county) 
